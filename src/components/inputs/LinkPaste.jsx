@@ -1,8 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { IconLink } from '@tabler/icons-react';
 
-const LinkPaste = () => {
+const LinkPaste = ({handleLinkPaste}) => {
     return (
-        <div>LinkPaste</div>
+        <label htmlFor="link-paste" className='cursor-pointer'>
+            <IconLink size={21}/>
+            <input
+                type='text'
+                id='link-input'
+                className='hidden'
+                onChange={handleLinkPaste}
+            />
+        </label>
     )
 }
 
