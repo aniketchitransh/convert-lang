@@ -1,10 +1,10 @@
 'use client'
-import 'regenerator-runtime/runtime';
+import "regenerator-runtime/runtime";
 import Image from "next/image";
 import React, { useState, ChangeEvent } from 'react';
 
 import TextArea from '@/components/inputs/TextArea'
-import SpeechRecognition from '@/components/SpeechRecognition/SpeechRecognition';
+import SpeechRecognitionComponent from '@/components/SpeechRecognition/SpeechRecognitionComponent';
 
 export default function Home() {
   const [sourceText, setSourceText] = useState<string>("");
@@ -32,7 +32,7 @@ export default function Home() {
                     />
                     <div className="flex flex-row justify-between w-full">
                       <span className="flex flex-row space-x-2 cursor-pointer">
-                        <SpeechRecognition
+                        <SpeechRecognitionComponent
                           setSourceText={setSourceText}
                         />
                       </span>
