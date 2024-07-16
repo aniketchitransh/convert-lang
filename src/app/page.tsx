@@ -5,9 +5,15 @@ import React, { useState, ChangeEvent } from 'react';
 
 import TextArea from '@/components/inputs/TextArea'
 import SpeechRecognitionComponent from '@/components/SpeechRecognition/SpeechRecognitionComponent';
+import { IconVolume } from "@tabler/icons-react";
 
 export default function Home() {
   const [sourceText, setSourceText] = useState<string>("");
+
+  const handleAudioPlayback = (text: string) => {
+    const utterance = new SpeechSynthesisUtterance(text)
+    window.speechSynthesis.speak(utterance)
+  }
 
   return (
     <div>
@@ -35,6 +41,11 @@ export default function Home() {
                         <SpeechRecognitionComponent
                           setSourceText={setSourceText}
                         />
+                        <IconVolume
+                          size={22}
+                          onClick={() => handleAudioPlayback(sourceText)}
+                        />
+                        {/* file upload component */}
                       </span>
                     </div>
                   </div>
