@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-    apiKey: process.env.loacl.OPENAI_API_KEY,
-    dangerouslyAllowBrowser: true
-})
+    apiKey: process.env.API_KEY,
+    dangerouslyAllowBrowser: true,
+});
 
 const useTranslate = (sourceText, selectedLanguage) => {
     const [targetText, setTargetText] = useState();
 
-    useEffect( () => {
+    useEffect(() => {
         const handleTranslate = async (sourceText) => {
             try {
                 const response = await openai.chat.completions.create({
-                    model: 'gpt-4o',
+                    model: 'whisper-1',
                     messages: [{
                         role: 'user',
                         content:
@@ -37,7 +37,7 @@ const useTranslate = (sourceText, selectedLanguage) => {
                 handleTranslate(sourceText)
             }, 500)
 
-            return () => clearImmediate(timeoutId)
+            return () => clearTimeout(timeoutId)
         }
     }, [sourceText, selectedLanguage])
 
